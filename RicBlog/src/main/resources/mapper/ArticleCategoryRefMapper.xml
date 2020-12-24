@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zljxxj.blog.mapper.ArticleCategoryRefMapper">
+    <resultMap id="BaseResultMap" type="com.zljxxj.blog.entity.ArticleCategoryRef">
+        <result column="article_id" jdbcType="INTEGER" property="articleId"/>
+        <result column="category_id" jdbcType="INTEGER" property="categoryId"/>
+    </resultMap>
+
+    <sql id="tb">article_category_ref</sql>
+
+    <select id="selectCategoryIdByArticleId" resultType="java.lang.Integer">
+        SELECT category_id FROM
+        <include refid="tb"/>
+        WHERE article_id = #{value}
+    </select>
+
+</mapper>
